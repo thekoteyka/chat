@@ -1,0 +1,12 @@
+{% block content %}
+    <form action="" method="post">
+          {% csrf_token %}
+
+          {{ form.as_p }}
+          {% if type == "login" %}
+          <input type="submit" value="Войти">
+          {% else %}
+          <input type="submit" value="Зарегистрироваться">
+          {% endif %}
+    </form>
+{% endblock %}

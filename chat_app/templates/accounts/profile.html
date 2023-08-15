@@ -1,0 +1,14 @@
+{{ profile }}
+<p>
+    Всего ваших сообщений в чате - {{ chat_data.count }}
+    Подписчиков - {{ subscribers.count }}
+    <div>
+        Ваши подписчики:
+    </div>  
+    {% for user in subscribers.all %}
+    <div>
+        {{ user.other_user.username }}
+    </div>
+    {% endfor %}
+    
+</p>

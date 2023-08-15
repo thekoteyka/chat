@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Public Chat Application
+{% endblock %}
+
+{% block content %}
+    <form action="/send/" method="post">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <input type="submit" value="Написать">
+    </form>
+
+    {% for message in obj %}
+
+        <p>
+            <mark>{{ message.user.username }} :</mark> {{ message.text }} ||| {{message.date.time }}
+            <form action="/subscribe/{{ message.user.id }}/" method="post">
+                {% csrf_token %}
+        
+                <input type="submit" value="Подписаться">
+            </form>
+        </p>
+        
+    {% endfor %}
+
+{% endblock %}
